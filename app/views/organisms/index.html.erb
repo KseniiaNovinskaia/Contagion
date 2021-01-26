@@ -1,1 +1,16 @@
 <h1>index page of organisms</h1>
+
+<% @organisms.each do |organism| %>
+  <div class="organism-card">
+    <h3> <%= organism.name %> </h3>
+    <div class="btn">
+      <%= link_to 'show', organism_path(organism) %>
+    </div>
+    <ul>
+      <li> body temperature: <%= organism.body_temperature %> °C</li>
+      <li> age: <%= organism.age %></li>
+      <li> species: <%= organism.species %></li>
+      <!-- <li> user id: <%= organism.user_id %></li> -->
+    </ul>
+  </div>
+<% end %>

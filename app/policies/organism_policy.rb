@@ -1,7 +1,7 @@
 class OrganismPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all # every logged in user can see all organisms
     end
   end
 end
