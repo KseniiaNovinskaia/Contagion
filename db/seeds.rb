@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+    # t.string "name"
+    # t.integer "body_temperature"
+    # t.integer "age"
+    # t.string "species"
+
+10.times do
+  Organism.create!(name: %w[Olaf Bob Kitty Knut].sample, body_temperature: (25..41).to_a.sample, age: (0..100).to_a.sample, species: %w[human pet plant].sample, user_id: 1)
+end
