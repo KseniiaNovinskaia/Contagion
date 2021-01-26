@@ -1,13 +1,14 @@
 class InfectionsController < ApplicationController
   def edit
     @infection = Infection.find(params[:id])
+    authorize @infection
   end
 
   def update
     @infection = Infection.find(params[:id])
     @infection.update(infection_params)
     redirect_to organisms_path # this can later be changed so that the redirect
-    #leads to the dashboard or something
+    # leads to the dashboard or something
   end
 
   private
