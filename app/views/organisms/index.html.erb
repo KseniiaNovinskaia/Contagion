@@ -1,4 +1,9 @@
-<h1>index page of organisms</h1>
+<h1>Discover beautiful organisms</h1>
+
+<%= render "searchbar" %>
+
+<!-- the filter doesn't work yet (Philipp, 2021/01/28) -->
+<!-- <%#= render "filter" %> -->
 
 <% @organisms.each do |organism| %>
   <div class="organism-card">
