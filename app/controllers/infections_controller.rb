@@ -1,17 +1,18 @@
 class InfectionsController < ApplicationController
-
-  # def new
-  # end
+  def new
+    @organism = Organism.find(params[:organism_id])
+    @infection = Infection.new
+    authorize @infection
+  end
 
   def create
     @organism = Organism.find(params[:organism_id])
     @infection = Infection.new(infection_params)
     @infection.organism = @organism
-    if @infection.save
-      redirect_to organism_path(@organism)
-    else
-      render "infections/show"
-    end
+    @infection.user = current_user
+    authorize @infection
+    @infection.save
+    redirect_to organism_path(@organism)
   end
 
   private

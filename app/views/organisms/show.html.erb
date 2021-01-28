@@ -2,4 +2,10 @@
 <h2> I am a <%= @organism.species %> !</h2>
 <h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
 
+<h3>Here is the list of all booked infections</h3>
+<% @organism.infections.each do |infection| %>
+<h2><%= infection.infection_start %> - <%= infection.infection_end %></h2>
+<% end %>
+
+<%= link_to "Infect",  new_organism_infection_path(@organism) %>
 

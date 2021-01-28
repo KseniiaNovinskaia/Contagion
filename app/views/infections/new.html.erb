@@ -1,0 +1,6 @@
+<%= simple_form_for [ @organism, @infection ] do |f| %>
+        <%= f.input :infection_start %>
+        <%= f.input :infection_end %>
+        <%= f.submit "Add", class: "btn btn-primary" %>
+      <% end %>
+

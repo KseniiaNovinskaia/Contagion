@@ -4,4 +4,8 @@ class InfectionPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    return true
+  end
 end
