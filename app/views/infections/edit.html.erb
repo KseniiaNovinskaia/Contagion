@@ -1,5 +1,5 @@
 <h1>Cancel your Infection</h1>
 <%= simple_form_for [@organism, @infection] do |f| %>
-  <%= f.input :status, collection: ["cancelled"], as: :check_boxes %>
-  <%= f.submit "Cancel Infection" %>
+  <%= f.input :status, collection: ["cancelled", "active"], as: :radio_buttons %>
+  <%= f.submit "Update Infection Status" %>
 <% end %>

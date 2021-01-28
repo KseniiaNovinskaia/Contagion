@@ -10,6 +10,7 @@ class InfectionsController < ApplicationController
     @infection.update(infection_params)
     redirect_to organisms_path # this can later be changed so that the redirect
     # leads to the dashboard or something
+    authorize @infection
   end
 
   private
