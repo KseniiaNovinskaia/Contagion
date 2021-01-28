@@ -1,6 +1,7 @@
 class InfectionsController < ApplicationController
   def edit
     @infection = Infection.find(params[:id])
+    @organism = Organism.find(params[:organism_id])
     authorize @infection
   end
 

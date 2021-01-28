@@ -1,5 +1,5 @@
-<h1>Cancel your </h1>
-<%= simple_form_for(@infection) do |f| %>
-<%= f.input :status %>
-<%= f.submit %>
-
+<h1>Cancel your Infection</h1>
+  <%= simple_form_for [@organism, @infection] do |f| %>
+  <%= f.input :status %>
+  <%= f.submit "Cancel Infection" %>
+<% end %>
