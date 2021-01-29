@@ -4,8 +4,8 @@ class OrganismPolicy < ApplicationPolicy
       scope.all # every logged in user can see all organisms
     end
   end
-    def show?
+
+  def show?
     true
   end
-
 end
