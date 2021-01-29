@@ -1,8 +1,8 @@
 class InfectionsController < ApplicationController
   def new
-    @organism = Organism.find(params[:organism_id])
-    @infection = Infection.new
-    authorize @infection
+    # @organism = Organism.find(params[:organism_id])
+    # @infection = Infection.new
+    # authorize @infection
   end
 
   def create
@@ -12,6 +12,7 @@ class InfectionsController < ApplicationController
     @infection.user = current_user
     authorize @infection
     @infection.save
+    flash[:alert] = "Infection is confirmed!"
     redirect_to organism_path(@organism)
   end
 

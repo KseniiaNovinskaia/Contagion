@@ -2,10 +2,24 @@
 <h2> I am a <%= @organism.species %> !</h2>
 <h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
 
-<h3>Here is the list of all booked infections</h3>
-<% @organism.infections.each do |infection| %>
-<h2><%= infection.infection_start %> - <%= infection.infection_end %></h2>
+<% if flash[:alert] %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= flash[:alert] %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <% end %>
 
-<%= link_to "Infect",  new_organism_infection_path(@organism) %>
 
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h2>Choose the dates to infect</h2>
+
+    <%= simple_form_for [ @organism, @infection ] do |f| %>
+      <%= f.input :infection_start, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :infection_end, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, "Infect", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
