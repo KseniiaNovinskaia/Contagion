@@ -3,7 +3,7 @@
       <input type="text" name="search_name" >
       <input type="submit" value="Search for Organisms">
   </form>
-  <% if !["", nil].include?(params[:search_name]) %>
+  <% unless ["", nil].include?(params[:search_name]) %>
     <form action="/organisms" method="GET">
       <input type="hidden" name="search_name" value="" >
       <input type="submit" value="Reset Search">
