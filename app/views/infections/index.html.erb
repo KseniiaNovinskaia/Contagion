@@ -10,8 +10,11 @@
       <li> body temperature: <%= infection.organism.body_temperature %> °C</li>
       <li> age: <%= infection.organism.age %></li>
       <li> species: <%= infection.organism.species %></li>
+      <li> status: <%= infection.status %></li>
     </ul>
   <p>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></p>
+  <% if infection.status == "active" %>
   <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch %>
+  <% end %>
   </div>
 <% end %>
