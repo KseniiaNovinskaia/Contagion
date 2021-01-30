@@ -1,4 +1,8 @@
 class InfectionsController < ApplicationController
+  def index
+    @infections = policy_scope(Infection)
+  end
+
   def create
     @organism = Organism.find(params[:organism_id])
     @infection = Infection.new(infection_params)
