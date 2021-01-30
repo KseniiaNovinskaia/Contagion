@@ -14,16 +14,17 @@ class InfectionsController < ApplicationController
     redirect_to organism_path(@organism)
   end
 
-  def edit
-    @infection = Infection.find(params[:id])
-    @organism = Organism.find(params[:organism_id])
-    authorize @infection
-  end
+  # def edit
+  #   @infection = Infection.find(params[:id])
+  #   @organism = Organism.find(params[:organism_id])
+  #   authorize @infection
+  # end
 
   def cancel
     @infection = Infection.find(params[:id])
     @infection.status = "cancelled"
-    redirect_to organisms_path # this can later be changed so that the redirect
+    @infection.save
+    redirect_to infections_path # this can later be changed so that the redirect
     # leads to the dashboard or something
     authorize @infection
   end

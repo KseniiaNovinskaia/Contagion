@@ -9,7 +9,7 @@ class InfectionPolicy < ApplicationPolicy
     true
   end
 
-  def update?
+  def cancel?
     record.user == user
   end
 end
