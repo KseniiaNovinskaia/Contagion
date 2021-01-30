@@ -8,6 +8,7 @@ class InfectionsController < ApplicationController
     @infection = Infection.new(infection_params)
     @infection.organism = @organism
     @infection.user = current_user
+    @infection.status = "active"
     authorize @infection
     @infection.save
     flash[:alert] = "Infection is confirmed!"
