@@ -26,7 +26,7 @@
             <li> <h2>status: <%= infection.status %></h2></li>
             <% if infection.status == "active" %>
               <li> <h2>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></h2></li>
-              <li> <h2><%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch %></h2></li>
+              <li> <h2><%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %></h2></li>
             <% end %>
           </ul>
         </div>
