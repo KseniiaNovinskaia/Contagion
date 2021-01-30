@@ -1,16 +1,22 @@
-<h1>index page of organisms</h1>
+<%= render 'shared/navbar' %>
 
-<% @organisms.each do |organism| %>
-  <div class="organism-card">
-    <h3> <%= organism.name %> </h3>
-    <div class="btn">
-      <%= link_to 'show', organism_path(organism) %>
-    </div>
-    <ul>
-      <li> body temperature: <%= organism.body_temperature %> °C</li>
-      <li> age: <%= organism.age %></li>
-      <li> species: <%= organism.species %></li>
-      <!-- <li> user id: <%= organism.user_id %></li> -->
-    </ul>
-  </div>
-<% end %>
+<div class="container">
+  <br><br>
+  <h5>We have found these organisms</h5>
+  <br>
+    <% @organisms.each do |organism| %>
+      <div class="card-list human">
+        <%=image_tag "organisms/human_1.png" %>
+        <div class="container" style="margin:20px">
+                <ul style="list-style-type:none;" >
+                  <h1> <%= organism.name %></h1>
+                  <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
+                  <li> <h2> age: <%= organism.age %></h2></li>
+                  <li> <h2>species: <%= organism.species %></h2></li>
+                  <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
+                  <!-- <li> user id: <%= organism.user_id %></li> -->
+                </ul>
+        </div>
+      </div>
+    <% end %>
+</div>
