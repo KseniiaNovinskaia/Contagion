@@ -1,6 +1,17 @@
-<h1>Hello I am <%= @organism.name %> </h1>
-<h2> I am a <%= @organism.species %> !</h2>
-<h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
+<%= render 'shared/navbar' %>
+
+
+
+<%= link_to "Back to all organisms", organisms_path %>
+
+<div class="container" style="margin-top: 50px">
+  <img src="https://picsum.photos/200/300">
+  <!-- cl_image_tag-->
+    <h1><%= @organism.name %>, <%= @organism.species %> </h1>
+    <h2>Hello I am <%= @organism.name %> </h2>
+    <h2> I am a <%= @organism.species %> !</h2>
+    <h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
+</div>
 
 <% if flash[:alert] %>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
