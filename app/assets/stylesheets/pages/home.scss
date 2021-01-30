@@ -1,0 +1,24 @@
+.homepage-title{
+  font-family: Poppins;
+  font-size: 90px;
+  font-weight: bolder;
+  color: $blue;
+}
+
+.homepage-subtitle{
+  font-family: Poppins;
+  font-size: 24px;
+  color: $blue;
+}
+
+.container-homepage{
+  background-image: url('background_image.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  margin: 16px auto;
+  height: 900px;
+}
+
+.text-container{
+  padding-top: 350px;
+}

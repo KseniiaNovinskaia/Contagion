@@ -1,0 +1,47 @@
+<!-- define an array of all existing species -->
+<% species = [] %>
+<% Organism.all.each do |organism| %>
+  <% species << organism.species unless species.include?(organism.species) %>
+<% end %>
+
+
+<div class="searchbar">
+  <form action="/organisms" method="GET">
+
+    <!-- name field -->
+    <label for="search_name">Name</label>
+    <input type="text" name="search_name" >
+
+    <!-- show the species in a drop-down -->
+    <select name="search_species">
+      <option value="">Pick a Species</option>
+      <% species.each do |species| %>
+        <option value="<%= species %>"><%= species %></option>
+      <% end %>
+    </select>
+
+    <input type="submit" value="Search for Organisms">
+  </form>
+
+  <!-- display 'Reset Search' button if the current organisms get filtered -->
+  <% unless ["", nil].include?(params[:search_name]) &&
+            ["", nil].include?(params[:search_species])%>
+
+    <!-- let the user know what they searched for -->
+    <div class="search_info">
+      <p>
+        <% unless ["", nil].include?(params[:search_name]) %>
+         Name: <%= params[:search_name] %><br>
+         <% end %>
+        <% unless ["", nil].include?(params[:search_species]) %>
+         Species: <%= params[:search_species] %>
+         <% end %>
+      </p>
+    </div>
+
+    <!-- simply submit empty form to set all search strings to nil -->
+    <form action="/organisms" method="GET">
+      <input type="submit" value="Reset Search">
+    </form>
+  <% end %>
+</div>
