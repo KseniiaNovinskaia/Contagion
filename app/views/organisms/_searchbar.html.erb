@@ -1,0 +1,12 @@
+<div class="searchbar">
+  <form action="/organisms" method="GET">
+      <input type="text" name="search_name" >
+      <input type="submit" value="Search for Organisms">
+  </form>
+  <% unless ["", nil].include?(params[:search_name]) %>
+    <form action="/organisms" method="GET">
+      <input type="hidden" name="search_name" value="" >
+      <input type="submit" value="Reset Search">
+    </form>
+  <% end %>
+</div>
