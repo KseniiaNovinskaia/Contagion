@@ -9,12 +9,23 @@
 
   <!-- cl_image_tag-->
   <div class="mt-4 ml-4">
-    <h1 ><%= @organism.name %>, <%= @organism.species %>,<%= @organism.age %> </h1>
+    <h1 ><%= @organism.name %>, <%= @organism.species %>, <%= @organism.age %> </h1>
     <h2>Hello I am <%= @organism.name %> </h2>
-    <h2> I am a <%= @organism.species %> !</h2>
+    <h2> I am a <%= @organism.species %> </h2>
     <h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
     </div>
+
+  <div class="form-wrapper mt-5 ml-4" style="width: 400px;">
+    <h2>Choose the dates to infect</h2>
+
+    <%= simple_form_for [ @organism, @infection ] do |f| %>
+      <%= f.input :infection_start, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :infection_end, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, "Infect", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
+
 
 <% if flash[:alert] %>
   <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -26,14 +37,3 @@
 <% end %>
 
 
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Choose the dates to infect</h2>
-
-    <%= simple_form_for [ @organism, @infection ] do |f| %>
-      <%= f.input :infection_start, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :infection_end, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Infect", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
