@@ -2,19 +2,34 @@
 
 <%= link_to "Back to search", organisms_path %>
 
-<h3> Here are all your infections</h3>
+<div class="mt-2 ml-10">
+  <br><br>
+  <h5 class="mt-2 ml-10">These are your infections</h5>
+  <br>
 
-<% @infections.each do |infection| %>
-  <h4><%= infection.organism.name %></h4>
-    <ul>
-      <li> body temperature: <%= infection.organism.body_temperature %> °C</li>
-      <li> age: <%= infection.organism.age %></li>
-      <li> species: <%= infection.organism.species %></li>
-      <li> status: <%= infection.status %></li>
-    </ul>
-  <p>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></p>
-  <% if infection.status == "active" %>
-  <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch %>
+  <% @infections.each do |infection| %>
+
+    <% if infection.organism.species == "pet" %>
+      <div class="card-list dashboard-card-height pet" > <%=image_tag "organisms/pet_1.png"%>
+    <% elsif infection.organism.species == "human" %>
+       <div class="card-list dashboard-card-height human"> <%=image_tag "organisms/human_1.png" %>
+    <% else %>
+      <div class="card-list dashboard-card-height plant"> <%=image_tag "organisms/plant_1.png" %>
+    <% end %>
+
+        <div class="container mb-2 mr-4" >
+          <ul style="list-style: none;">
+            <h1><%= infection.organism.name %></h1>
+            <li> <h2>body temperature:<%= infection.organism.body_temperature %> °C</h2> </li>
+            <li> <h2>age: <%= infection.organism.age %></h2></li>
+            <li> <h2>species: <%= infection.organism.species %></h2></li>
+            <li> <h2>status: <%= infection.status %></h2></li>
+            <% if infection.status == "active" %>
+              <li> <h2>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></h2></li>
+              <li> <h2><%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch %></h2></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
   <% end %>
-  </div>
-<% end %>
+</div>
