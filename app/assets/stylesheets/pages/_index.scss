@@ -1,2 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
+
+h5{
+  font-family: Poppins;
+  font-size: 45px;
+  font-weight: bolder;
+  color: $blue;
+}

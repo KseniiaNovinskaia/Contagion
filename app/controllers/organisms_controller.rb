@@ -24,11 +24,11 @@ class OrganismsController < ApplicationController
   end
 
   def handle_search_name
-    if session[:search_name] != ""
+    if session[:search_name].nil? || session[:search_name].empty?
+      @organisms = Organism.all
+    else
       @organisms = Organism.where("name LIKE ?", "%#{session[:search_name].titleize}%")
       # @teams = @teams.where(code: @players.pluck(:team)) <-- from the tutorial
-    else
-      @organisms = Organism.all
     end
   end
 
