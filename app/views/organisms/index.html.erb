@@ -1,8 +1,6 @@
 <%= render 'shared/navbar' %>
 <%= render "searchbar_organisms" %>
 
-<h1>Discover beautiful organisms</h1>
-
 <div class="mt-2 ml-10">
   <br><br>
   <h5 class="mt-2 ml-10">We have XXfound these organisms</h5>
@@ -12,7 +10,7 @@
 
     <% if organism.species == "pet" %>
       <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
-        <% elsif organism.species == "human" %>
+    <% elsif organism.species == "human" %>
       <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
     <% else %>
       <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
