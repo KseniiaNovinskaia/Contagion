@@ -5,23 +5,35 @@
 <!-- the filter doesn't work yet (Philipp, 2021/01/28) -->
 <!-- <%#= render "filter" %> -->
 
-<div class="container">
+<div class="mt-2 ml-10">
   <br><br>
-  <h5>We have found these organisms</h5>
+  <h5 class="mt-2 ml-10">We have XXfound these organisms</h5>
   <br>
+
     <% @organisms.each do |organism| %>
-      <div class="card-list human">
-        <%=image_tag "organisms/human_1.png" %>
-        <div class="container" style="margin:20px">
-                <ul style="list-style-type:none;" >
-                  <h1> <%= organism.name %></h1>
-                  <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
-                  <li> <h2> age: <%= organism.age %></h2></li>
-                  <li> <h2>species: <%= organism.species %></h2></li>
-                  <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
-                  <!-- <li> user id: <%= organism.user_id %></li> -->
-                </ul>
-        </div>
-      </div>
+
+          <% if organism.species == "pet" %>
+          <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
+            <% elsif organism.species == "human" %>
+          <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
+            <% else %>
+          <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
+          <% end %>
+
+
+            <div class="container mb-2 mr-4" >
+                    <ul style="list-style-type:none;" >
+                      <h1> <%= organism.name %></h1>
+                      <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
+                      <li> <h2> age: <%= organism.age %></h2></li>
+                      <li> <h2>species: <%= organism.species %></h2></li>
+                      <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
+                      <!-- <li> user id: <%= organism.user_id %></li> -->
+                    </ul>
+            </div>
+  </div>
     <% end %>
+
 </div>
+
+
