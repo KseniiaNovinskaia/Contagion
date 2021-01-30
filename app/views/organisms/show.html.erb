@@ -1,13 +1,13 @@
 <%= render 'shared/navbar' %>
 
-
-
+<div class="btn btn-primary">
 <%= link_to "Back to all organisms", organisms_path %>
+</div>
 
-<div class="container" style="margin-top: 50px">
-  <img src="https://picsum.photos/200/300">
+<div class="card-show human mt-20 mx-auto" style="padding: 50px">
+  <%=image_tag "organisms/human_1.png" %>
   <!-- cl_image_tag-->
-    <h1><%= @organism.name %>, <%= @organism.species %> </h1>
+    <h1><%= @organism.name %>, <%= @organism.species %>,<%= @organism.age %> </h1>
     <h2>Hello I am <%= @organism.name %> </h2>
     <h2> I am a <%= @organism.species %> !</h2>
     <h2> I am <%= @organism.age %> years old and <%= @organism.body_temperature %> ° is my body temperature </h2>
