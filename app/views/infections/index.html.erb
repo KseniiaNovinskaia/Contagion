@@ -1,0 +1,12 @@
+<h3> Here are all your infections</h3>
+
+<% @infections.each do |infection| %>
+  <h4><%= infection.organism.name %></h4>
+    <ul>
+      <li> body temperature: <%= infection.organism.body_temperature %> °C</li>
+      <li> age: <%= infection.organism.age %></li>
+      <li> species: <%= infection.organism.species %></li>
+    </ul>
+  <p>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></p>
+  </div>
+<% end %>
