@@ -8,5 +8,6 @@
       <li> species: <%= infection.organism.species %></li>
     </ul>
   <p>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></p>
+  <%= link_to "Cancel Infection", "cancel_infection" %>
   </div>
 <% end %>

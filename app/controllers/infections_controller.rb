@@ -20,9 +20,9 @@ class InfectionsController < ApplicationController
     authorize @infection
   end
 
-  def update
+  def cancel
     @infection = Infection.find(params[:id])
-    @infection.update(infection_params)
+    @infection.status = "cancelled"
     redirect_to organisms_path # this can later be changed so that the redirect
     # leads to the dashboard or something
     authorize @infection
