@@ -1,31 +1,51 @@
-<!-- define an array of all existing species -->
-<% species = [] %>
-<% Organism.all.each do |organism| %>
-  <% species << organism.species unless species.include?(organism.species) %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- include following two lines to work with 'Select2'  (see: https://select2.org/getting-started/installation)-->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+<body>
+    <!-- define an array of all existing species -->
+  <% species = [] %>
+  <% Organism.all.each do |organism| %>
+    <% species << organism.species unless species.include?(organism.species) %>
+  <% end %>
+  <% species.sort! %>
+
+  <% body_temperatures = [] %>
+  <% Organism.all.each do |organism| %>
+    <% body_temperatures << organism.body_temperature unless body_temperatures.include?(organism.body_temperature) %>
+  <% end %>
+  <% body_temperatures.sort! %>
 
 
-<div class="searchbar">
-  <form action="/organisms" method="GET">
+<!--   <div class="searchbar">
+    <form action="/organisms" method="GET"> -->
 
-    <!-- name field -->
-    <label for="search_name">Name</label>
-    <input type="text" name="search_name" >
+      <!-- name field -->
+<!--       <label for="search_name">Name</label>
+      <input type="text" name="search_name" > -->
 
-    <!-- show the species in a drop-down -->
-    <select name="search_species">
-      <option value="">Pick a Species</option>
-      <% species.each do |species| %>
-        <option value="<%= species %>"><%= species %></option>
-      <% end %>
-    </select>
+      <!-- show the species in a drop-down -->
+<!--       <select class="select2" name="search_species" multiple="multiple">
+        <option value="">Pick a Species</option>
+        <%# species.each do |species| %>
+          <option value="<%= species %>"><%= species %></option>
+        <%# end %>
+      </select>
 
-    <input type="submit" value="Search for Organisms">
-  </form>
+      <input type="submit" value="Search for Organisms">
+    </form> -->
 
-  <!-- display 'Reset Search' button if the current organisms get filtered -->
+    <!-- display the search query and a 'Reset Search' button if the current organisms get filtered -->
   <% unless ["", nil].include?(params[:search_name]) &&
             ["", nil].include?(params[:search_species])%>
+  <!-- </div> -->
 
     <!-- let the user know what they searched for -->
     <div class="search_info">
@@ -39,9 +59,31 @@
       </p>
     </div>
 
-    <!-- simply submit empty form to set all search strings to nil -->
+    <!-- Reset button: simply submit empty form to set all search strings to nil -->
     <form action="/organisms" method="GET">
       <input type="submit" value="Reset Search">
     </form>
   <% end %>
-</div>
+
+
+  <%= form_tag organisms_path, method: :get do %>
+    <%= text_field_tag :search_name,
+      params[:search_name],
+      class: "form-control",
+      placeholder: "Find an organism"
+    %>
+
+    <%= label_tag :search_species, 'Species' %>
+
+    <%= select_tag :search_species,
+      options_for_select(species),
+      # options = { include_blank: "All species", multiple: true, class: "select2" }
+      options = { multiple: true, class: "select2" }
+    %>
+
+    <%#= range_field_tag :body_temperature, value = nil, options = {min: body_temperatures.first, max: body_temperatures.last, class: "slide"} %>
+
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</body>
+</html>

@@ -22,18 +22,22 @@ class OrganismsController < ApplicationController
 
   # we probably want to refactor this after the lecture on search bars
   def handle_search_name
-    if (session[:search_name].nil? || session[:search_name].empty?) &&
-       (session[:search_species].nil? || session[:search_species].empty?)
+    name = session[:search_name]
+    species = session[:search_species]
+    if name.blank? && species.blank?
       @organisms = Organism.all
-    elsif !session[:search_name].empty? && session[:search_species].empty?
-      @organisms = Organism.where("name LIKE ?",
-                                  "%#{session[:search_name].titleize}%")
-    elsif session[:search_name].empty? && !session[:search_species].empty?
-      @organisms = Organism.where("species = ?",
+    # else
+    #   @organisms = Organism.where("name @@ :query OR species @@ :query",
+    #                               query: "%#{session[:search_name]}%")
+    elsif name.present? && species.blank?
+      @organisms = Organism.where("name @@ ?",
+                                  "%#{session[:search_name]}%")
+    elsif name.blank? && species.present?
+      @organisms = Organism.where("species @@ ?",
                                   session[:search_species])
     else
-      @organisms = Organism.where("name LIKE ? AND species = ?",
-                                  "%#{session[:search_name].titleize}%",
+      @organisms = Organism.where("name @@ ? AND species @@ ?",
+                                  "%#{session[:search_name]}%",
                                   session[:search_species])
     end
   end
