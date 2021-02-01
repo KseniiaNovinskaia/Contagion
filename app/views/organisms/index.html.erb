@@ -2,33 +2,40 @@
 
 <%= render "shared/searchbar_organisms" %>
 
-
 <div class="mt-2 ml-5 mb-5">
-  <br><br>
-  <h5 class="mt-2 ml-5">We have found these organisms for you, VIRUS</h5>
+  <br>
+  <% if @organisms.empty? %>
+    <h5 class="mt-2 ml-5">No organisms found! <br> Try with another search input :)</h5>
+  <% else %>
+    <h5 class="mt-2 ml-5">We have found <%= @organisms.size %> organism<%= 's' unless @organisms.size == 1%> for you, VIRUS</h5>
+  <% end %>
   <br>
 
-  <% @organisms.each do |organism| %>
+  <% unless @organisms.blank? %>
+    <% @organisms.each do |organism| %>
 
-    <% if organism.species == "pet" %>
-      <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
-    <% elsif organism.species == "human" %>
-      <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
-    <% else %>
-      <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
-    <% end %>
+      <% if organism.species == "pet" %>
+        <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
+      <% elsif organism.species == "human" %>
+        <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
+      <% else %>
+        <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
+      <% end %>
 
-        <div class="container mb-2 mr-4" >
-          <ul style="list-style-type:none;" >
-            <h1> <%= organism.name %></h1>
-            <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
-            <li> <h2> age: <%= organism.age %></h2></li>
-            <li> <h2>species: <%= organism.species %></h2></li>
-            <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
-            <!-- <li> user id: <%= organism.user_id %></li> -->
-          </ul>
+          <div class="container mb-2 mr-4" >
+            <ul style="list-style-type:none;" >
+              <h1> <%= organism.name %></h1>
+              <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
+              <li> <h2> age: <%= organism.age %></h2></li>
+              <li> <h2>species: <%= organism.species %></h2></li>
+              <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
+              <!-- <li> user id: <%= organism.user_id %></li> -->
+            </ul>
+          </div>
+
         </div>
-
-      </div>
+    <% end %>
   <% end %>
+
+
 </div>
