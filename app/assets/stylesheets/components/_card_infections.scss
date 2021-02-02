@@ -2,35 +2,14 @@
 
 }
 
-i.fa-heart {
-  position: relative;
-  top: -53px;
-}
 
-.btn-primary {
-  border-radius: 100px;
-  padding: 16px 50px;
 
-  border: 6px solid white;
-}
-
-.card-left {
-  border-right: 1px solid #AE8800;
-}
-
-.card-list{
-  width: 800px;
+.card-myinfections{
+  width: 200px;
   height: 200px;
   top: 214px;
   left: 139px;
   border-radius: 10px;
-  i {
-    color: white;
-    font-size: 25px;
-    .fa-cat {
-      font-size: 120px;
-    }
-  }
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 30px;
@@ -43,7 +22,7 @@ i.fa-heart {
   //align-items: center;
   h1 {
     font-family: Poppins;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bolder;
     color: white;
   }
@@ -98,7 +77,7 @@ i.fa-heart {
 
 .human{
   background-color: #FF8577;
-  border: solid 4px #F0CBCB;
+  border: solid 4px #BF3D3D;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
