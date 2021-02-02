@@ -2,6 +2,64 @@
 
 <%= link_to "Back to search", organisms_path %>
 
+
+
+<h5 class="mt-5 ml-5">These are your infections</h5>
+
+<div class="cards-grid mx-5 mt-5">
+  <%# @infections_sorted = @infections.sort_by {|i| i.infection_start} %>
+  <% @infections_sorted.each do |infection| %>
+
+    <%# LOGIC FOR PETS%>
+    <% if infection.organism.species == "pet" %>
+      <% if infection.status == "active" %>
+        <div class="card-infection card-active">
+          <%= image_tag "organisms/pet_1.png"%>
+      <% else %>
+        <div class="card-infection card-cancelled">
+          <%= image_tag "organisms/pet_1.png"%>
+      <% end %>
+
+    <%# LOGIC FOR HUMANS%>
+    <% elsif infection.organism.species == "human" %>
+      <% if infection.status == "active" %>
+        <div class="card-infection card-active">
+          <%= image_tag "organisms/human_1.png"%>
+      <% else %>
+        <div class="card-infection card-cancelled">
+          <%= image_tag "organisms/human_1.png"%>
+      <% end %>
+
+    <%# LOGIC FOR PLANTS%>
+    <% else %>
+      <% if infection.status == "active" %>
+        <div class="card-infection card-active">
+          <%= image_tag "organisms/plant_1.png"%>
+      <% else %>
+        <div class="card-infection card-cancelled">
+          <%= image_tag "organisms/plant_1.png"%>
+      <% end %>
+    <% end %>
+          <div class="card-infection-infos">
+            <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
+            <p>
+              <%= infection.status %>
+              <br>
+              <% if infection.status == "active" %>
+                <%= infection.infection_start %> - <%= infection.infection_end %>
+                <br>
+                <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %>
+              <% end %>
+<%# TESTING DATE FUNCTIONALITY %>
+              <% if infection.infection_start < Date.today %>
+                hello
+              <% end %>
+            </p>
+          </div>
+        </div>
+  <% end %>
+</div>
+
 <div class="mt-2 ml-10">
   <br><br>
   <h5 class="mt-2 ml-10">These are your infections</h5>
