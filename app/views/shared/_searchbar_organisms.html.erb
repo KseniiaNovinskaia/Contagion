@@ -67,7 +67,7 @@
 
   <div class="searchbar_container">
   <!-- Search Form -->
-    <%= form_tag organisms_path, method: :get do %>
+    <%= form_tag organisms_path, method: :get, class: "form-search" do %>
 
       <!-- Searchfield: Name -->
       <%#= text_field_tag :search_name,
@@ -76,43 +76,59 @@
         placeholder: "Find an organism"
       %>
 
-      <!-- Searchfield: Species -->
-      <%= label_tag :search_species, 'Species' %>
-      <%= select_tag :search_species,
-        options_for_select(@species),
-        options = { multiple: true, class: "select2" }
-      %>
+      <div class="searchbar-part-container">
+        <div class="searchbar-part dropdown-multiselect">
+          <div class="dropdown-multiselect-box">
+            <!-- Searchfield: Species -->
+            <%#= label_tag :search_species, 'Species' %>
+            <%= select_tag :search_species,
+              options_for_select(@species),
+              options = { multiple: true, class: "select2" }
+            %>
+          </div>
+        </div>
+      </div>
 
-      <!-- Searchfield: Body Temperature -->
-      <%= label_tag :search_species, 'Max Body Temperature' %>
-      <%  value = params[:search_body_temperature].blank? ? @mid_body_temperature : params[:search_body_temperature]%>
-      <%= range_field_tag :search_body_temperature,
-      # params[:search_body_temperature],
-      value,
-      options = {
-        min: @min_body_temperature,
-        max: @max_body_temperature,
-        oninput: "document.getElementById('body-temperature-output').value = this.value + '°C'"
-        }
-      %>
-      <output id="body-temperature-output"> <%= value.to_s + '°C' %> </output>
+      <div class="range-input searchbar-part-container">
+        <div class="searchbar-part">
+          <!-- Searchfield: Body Temperature -->
+          <%= label_tag :search_body_temperature, 'body temperature' %>
+          <%  value = params[:search_body_temperature].blank? ? @mid_body_temperature : params[:search_body_temperature]%>
+          <%= range_field_tag :search_body_temperature,
+          # params[:search_body_temperature],
+          value,
+          options = {
+            min: @min_body_temperature,
+            max: @max_body_temperature,
+            oninput: "document.getElementById('body-temperature-output').value = this.value + '°C'"
+            }
+          %>
+          <output id="body-temperature-output"> <%= 'up to ' + value.to_s + '°C' %> </output>
+        </div>
+      </div>
 
-      <!-- Searchfield: Age -->
-      <%= label_tag :search_age, 'Max Age' %>
-      <%  value = params[:search_age].blank? ? @mid_age : params[:search_age]%>
-      <%= range_field_tag :search_age,
-      # params[:search_age],
-      value,
-      options = {
-        min: @min_age,
-        max: @max_age,
-        oninput: "document.getElementById('age-output').value = this.value + ' Years'"
-        }
-      %>
-      <output id="age-output"> <%= value.to_s + ' Years' %> </output>
+      <div class="range-input searchbar-part-container">
+        <div class="searchbar-part">
+          <!-- Searchfield: Age -->
+          <%= label_tag :search_age, 'age' %>
+          <%  value = params[:search_age].blank? ? @mid_age : params[:search_age]%>
+          <%= range_field_tag :search_age,
+          # params[:search_age],
+          value,
+          options = {
+            min: @min_age,
+            max: @max_age,
+            oninput: "document.getElementById('age-output').value = this.value + ' Years'"
+            }
+          %>
+          <output id="age-output"> <%= 'up to ' + value.to_s + ' Years' %> </output>
+        </div>
+      </div>
 
-      <!-- Submit Button-->
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <div class="searchbar-part-container">
+        <!-- Submit Button-->
+        <%= submit_tag "Search", class: "btn btn-primary searchbar-part submit-searchbar" %>
+      </div>
     <% end %>
   </div>
 

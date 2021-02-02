@@ -1,0 +1,94 @@
+.searchbar_container {
+  margin: 0 auto;
+  // background: rgb(120,120,120);
+  border-radius: 100px;
+  // padding: 8px 32px;
+  font-family: $main-font;
+  color: white;
+}
+
+.form-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar-part-container {
+  width: 20%;
+  height: 100px;
+  display: flex;
+  // flex-direction: column;
+  // align-items: center;
+
+}
+
+.searchbar-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin: auto;
+  background: $blue;
+  // padding: 8px 32px;
+  border: 1px white solid;
+
+  label, output {
+    font-size: 14px;
+    margin: 4px;
+  }
+}
+
+.dropdown-multiselect-box {
+  height: 60px;
+  margin: auto 0;
+  width: 95%;
+
+  .select2-container {
+    width: 100% !important;
+  }
+
+  // the box you can click in
+  .select2-selection {
+  height: 60px;
+  border: none !important;
+  }
+
+  // the list you choose from
+  .select2-results__option {
+
+  }
+
+  // the option you've chosen
+  .select2-selection__choice__display {
+    // color: black;
+  }
+}
+
+
+
+
+#search_species {
+}
+
+#search_body_temperature {
+
+}
+
+#search_age {
+
+}
+
+
+.dropdown-multiselect {
+  border-radius: 32px 0 0 32px;
+  padding: 0 8px 0 16px;
+}
+
+.range-input {
+
+}
+
+.submit-searchbar {
+  border-radius: 0 32px 32px 0;
+}
