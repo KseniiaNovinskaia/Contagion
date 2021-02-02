@@ -1,33 +1,40 @@
-$past-infection-color: hsla(120, 0, 70, 1);
-$current-infection-color: hsla(120, 100, 70, 1);
-$future-infection-color: hsla(120, 100, 70, 0.5);
-$cancelled-infection-color: hsla(360, 100, 70, 1);
+$past-infection-color-active: hsla(120, 0, 70, 1);
+$past-infection-color-cancelled: hsla(360, 0, 70, 1);
+$current-infection-color-active: hsla(120, 100, 50, 1);
+$current-infection-color-cancelled: hsla(360, 100, 50, 1);
+$future-infection-color-active: hsla(120, 100, 50, 0.3);
+$future-infection-color-cancelled: hsla(360, 100, 50, 0.3);
 
-.cancelled {
-  font-size: 120px;
+.past.card-active {
+  background-color: $past-infection-color-active;
+  opacity: 0.7;
 }
-.active {
-  font-size: 120px;
+
+.past.card-cancelled {
+  background-color: $past-infection-color-cancelled;
+  opacity: 0.7;
 }
+
+.current.card-active {
+  background-color: $current-infection-color-active;
+}
+
+.current.card-cancelled {
+  background-color: $current-infection-color-cancelled;
+}
+
+.future.card-active {
+  background-color: $future-infection-color-active;
+}
+
+.future.card-cancelled {
+  background-color: $future-infection-color-cancelled;
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
-.card-infections-dashboard {
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  grid-gap: 32px;
 }
 
 .card-infection {
@@ -65,14 +72,6 @@ $cancelled-infection-color: hsla(360, 100, 70, 1);
 .card-infection .btn {
   font-size: 12px;
   margin-top: 6px;
-}
-
-.card-active {
-  background: white;
-}
-
-.card-cancelled {
-  background: $cancelled-infection-color;
 }
 
 // Smallest device
