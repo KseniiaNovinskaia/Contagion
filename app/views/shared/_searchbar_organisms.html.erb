@@ -100,7 +100,7 @@
           options = {
             min: @min_body_temperature,
             max: @max_body_temperature,
-            oninput: "document.getElementById('body-temperature-output').value = this.value + '°C'"
+            oninput: "document.getElementById('body-temperature-output').value = 'up to ' + this.value + '°C'"
             }
           %>
           <output id="body-temperature-output"> <%= 'up to ' + value.to_s + '°C' %> </output>
@@ -118,7 +118,7 @@
           options = {
             min: @min_age,
             max: @max_age,
-            oninput: "document.getElementById('age-output').value = this.value + ' Years'"
+            oninput: "document.getElementById('age-output').value = 'up to ' + this.value + ' Years'"
             }
           %>
           <output id="age-output"> <%= 'up to ' + value.to_s + ' Years' %> </output>
