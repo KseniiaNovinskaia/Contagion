@@ -2,30 +2,14 @@
 
 }
 
-i.fa-heart {
-  position: relative;
-  top: -53px;
-}
 
-.btn-primary {
-  border-radius: 100px;
-  padding: 16px 50px;
-  border: 4px solid white;
-}
 
-.card-left {
-  border-right: 1px solid white;
-}
-
-.card-list{
-  width: 800px;
+.card-myinfections{
+  width: 200px;
   height: 200px;
   top: 214px;
   left: 139px;
-  border-radius: 20px;
-i {
-  font-size: 25px;
-}
+  border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 30px;
@@ -38,9 +22,9 @@ i {
   //align-items: center;
   h1 {
     font-family: Poppins;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bolder;
-    color: black;
+    color: white;
   }
   h2 {
     font-family: Poppins;
@@ -75,7 +59,7 @@ i {
     font-family: Poppins;
     font-size: 50px;
     font-weight: bolder;
-    color: #2E48C8;
+    color: white;
   }
   h2 {
     font-family: Poppins;
@@ -90,35 +74,19 @@ i {
   }
 }
 
+
 .human{
   background-color: #FF8577;
-  border: solid 1px #BF3D3D;
-    i {
-    color: #BF3D3D;
-  }
-  h1{
-    color: #FF004D;
-  }
+  border: solid 4px #BF3D3D;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .plant {
   background-color: #699BF7;
   border: solid 4px #2E48C8;
-    i {
-    color: #2E48C8;
-  }
-  h1{
-    color: #1F28CF;
-  }
 }
 
 .pet {
   background-color: #FFC700;
   border: solid 4px #AE8800;
-      i {
-    color: #766118;
-  }
-  h1{
-    color: #784931;
-  }
 }
