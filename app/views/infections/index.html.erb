@@ -2,6 +2,7 @@
 
 <%= link_to "Back to search", organisms_path %>
 
+<row>
 <div class="mt-2 ml-10">
   <br><br>
   <h5 class="mt-2 ml-10">These are your infections</h5>
@@ -10,18 +11,17 @@
   <% @infections.each do |infection| %>
 
     <% if infection.organism.species == "pet" %>
-      <div class="card-list dashboard-card-height pet" > <%=image_tag "organisms/pet_1.png"%>
+      <div class="card-myinfections dashboard-card-height pet" >
     <% elsif infection.organism.species == "human" %>
-       <div class="card-list dashboard-card-height human"> <%=image_tag "organisms/human_1.png" %>
+       <div class="card-myinfections dashboard-card-height human">
     <% else %>
-      <div class="card-list dashboard-card-height plant"> <%=image_tag "organisms/plant_1.png" %>
+      <div class="card-myinfections dashboard-card-height plant">
     <% end %>
 
         <div class="container mb-2 mr-4" >
           <ul style="list-style: none;">
             <h1><%= infection.organism.name %></h1>
-            <li> <h2>body temperature:<%= infection.organism.body_temperature %> °C</h2> </li>
-            <li> <h2>age: <%= infection.organism.age %></h2></li>
+
             <li> <h2>species: <%= infection.organism.species %></h2></li>
             <li> <h2>status: <%= infection.status %></h2></li>
             <% if infection.status == "active" %>
@@ -33,3 +33,4 @@
       </div>
   <% end %>
 </div>
+</row>
