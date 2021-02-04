@@ -1,6 +1,7 @@
 class InfectionsController < ApplicationController
   def index
     @infections = policy_scope(Infection)
+    @infections_sorted = @infections.sort_by {|i| i.infection_start}
   end
 
   def create
