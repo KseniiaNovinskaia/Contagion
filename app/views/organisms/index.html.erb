@@ -1,117 +1,122 @@
-<div> <%= render 'shared/navbar' %> <%= render "shared/searchbar_organisms" %> </div>
+<!-- <div> <%#= render 'shared/navbar' %> <%#= render "shared/searchbar_organisms" %> </div> -->
+<%= render 'shared/navbar' %>
 
-<div class="mt-2 ml-5 mb-5">
+<div class="container">
+  <%= render "shared/searchbar_organisms" %>
+  <div class="mt-2 ml-5 mb-5">
 
-  <br>
-  <% if @organisms.empty? %>
-    <h5 class="mt-2 ml-5">No organisms found! <br> Try with another search input :)</h5>
-  <% else %>
-    <h5 class="mt-2 ml-5">We have found <%= @organisms.size %> organism<%= 's' unless @organisms.size == 1%> for you, VIRUS</h5>
-  <% end %>
-  <br>
-
-  <% unless @organisms.blank? %>
-    <% @organisms.each do |organism| %>
-
-
-    <% if organism.species == "pet" %>
-
-
-      <div class="card-container card-list pet d-flex "> <%#=image_tag "organisms/pet_1.png" %>
-
-      <div class="card-left d-flex flex-column justify-content-between p-4">
-        <i class="fas fa-signature"></i>
-        <i class="fas fa-info"></i>
-        <i class="fas fa-thermometer-half"></i>
-      </div>
-
-      <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
-        <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
-        <h1> <%= organism.species.capitalize %></h1>
-        <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
-      </div>
-      <div class="card-right w-50 d-flex justify-content-around align-items-center">
-        <i class="fas fa-cat" style="font-size: 110px;"></i><i class="far fa-heart"></i>
-        <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
-      </div>
-
-
-      </div>
-
-
-    <% elsif organism.species == "human" %>
-
-     <div class="card-container card-list human d-flex "> <%#=image_tag "organisms/pet_1.png" %>
-
-      <div class="card-left d-flex flex-column justify-content-between p-4">
-        <i class="fas fa-signature"></i>
-        <i class="fas fa-info"></i>
-        <i class="fas fa-thermometer-half"></i>
-      </div>
-
-      <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
-        <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
-        <h1> <%= organism.species.capitalize %></h1>
-        <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
-      </div>
-      <div class="card-right w-50 d-flex justify-content-around align-items-center">
-        <i class="fas fa-walking" style="font-size: 100px;"></i><i class="far fa-heart"></i>
-        <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
-      </div>
-
-      </div>
-
-
-
+    <br>
+    <% if @organisms.empty? %>
+      <h5 class="mt-2 ml-5">No organisms found! <br> Try with another search input :)</h5>
     <% else %>
+      <h5 class="mt-2 ml-5">We have found <%= @organisms.size %> organism<%= 's' unless @organisms.size == 1%> for you, VIRUS</h5>
+    <% end %>
+    <br>
 
-   <div class="card-container card-list plant d-flex "> <%#=image_tag "organisms/pet_1.png" %>
-
-      <div class="card-left d-flex flex-column justify-content-between p-4">
-        <i class="fas fa-signature"></i>
-        <i class="fas fa-info"></i>
-        <i class="fas fa-thermometer-half"></i>
-      </div>
-
-      <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
-        <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
-        <h1> <%= organism.species.capitalize %></h1>
-        <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
-      </div>
-      <div class="card-right w-50 d-flex justify-content-around align-items-center">
-        <i class="fab fa-pagelines" style="font-size: 120px;"></i><i class="far fa-heart"></i>
-        <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
-      </div>
-
-      </div>
+    <% unless @organisms.blank? %>
+      <% @organisms.each do |organism| %>
 
 
-
-
-  <% end %>
       <% if organism.species == "pet" %>
-        <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
-      <% elsif organism.species == "human" %>
-        <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
-      <% else %>
-        <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
-      <% end %>
 
-          <div class="container mb-2 mr-4" >
-            <ul style="list-style-type:none;" >
-              <h1> <%= organism.name %></h1>
-              <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
-              <li> <h2> age: <%= organism.age %></h2></li>
-              <li> <h2>species: <%= organism.species %></h2></li>
-              <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
-              <!-- <li> user id: <%= organism.user_id %></li> -->
-            </ul>
-          </div>
+
+        <div class="card-container card-list pet d-flex "> <%#=image_tag "organisms/pet_1.png" %>
+
+        <div class="card-left d-flex flex-column justify-content-between p-4">
+          <i class="fas fa-signature"></i>
+          <i class="fas fa-info"></i>
+          <i class="fas fa-thermometer-half"></i>
+        </div>
+
+        <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
+          <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
+          <h1> <%= organism.species.capitalize %></h1>
+          <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
+        </div>
+        <div class="card-right w-50 d-flex justify-content-around align-items-center">
+          <i class="fas fa-cat" style="font-size: 110px;"></i><i class="far fa-heart"></i>
+          <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
+        </div>
+
 
         </div>
+
+
+      <% elsif organism.species == "human" %>
+
+       <div class="card-container card-list human d-flex "> <%#=image_tag "organisms/pet_1.png" %>
+
+        <div class="card-left d-flex flex-column justify-content-between p-4">
+          <i class="fas fa-signature"></i>
+          <i class="fas fa-info"></i>
+          <i class="fas fa-thermometer-half"></i>
+        </div>
+
+        <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
+          <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
+          <h1> <%= organism.species.capitalize %></h1>
+          <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
+        </div>
+        <div class="card-right w-50 d-flex justify-content-around align-items-center">
+          <i class="fas fa-walking" style="font-size: 100px;"></i><i class="far fa-heart"></i>
+          <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
+        </div>
+
+        </div>
+
+
+
+      <% else %>
+
+     <div class="card-container card-list plant d-flex "> <%#=image_tag "organisms/pet_1.png" %>
+
+        <div class="card-left d-flex flex-column justify-content-between p-4">
+          <i class="fas fa-signature"></i>
+          <i class="fas fa-info"></i>
+          <i class="fas fa-thermometer-half"></i>
+        </div>
+
+        <div class="card-center flex-grow-1 d-flex flex-column justify-content-between p-4">
+          <h2> <%= organism.name %> age: <strong><%= organism.age %> Y OLD </strong></h2>
+          <h1> <%= organism.species.capitalize %></h1>
+          <h2> Body temperature: <strong><%= organism.body_temperature %> °C</strong></h2>
+        </div>
+        <div class="card-right w-50 d-flex justify-content-around align-items-center">
+          <i class="fab fa-pagelines" style="font-size: 120px;"></i><i class="far fa-heart"></i>
+          <%= link_to 'see', organism_path(organism), class: "btn btn-primary" %>
+        </div>
+
+        </div>
+
+
+
+
+    <% end %>
+        <% if organism.species == "pet" %>
+          <div class="card-list pet" > <%=image_tag "organisms/pet_1.png" %>
+        <% elsif organism.species == "human" %>
+          <div class="card-list human"> <%=image_tag "organisms/human_1.png" %>
+        <% else %>
+          <div class="card-list plant"> <%=image_tag "organisms/plant_1.png" %>
+        <% end %>
+
+            <div class="container mb-2 mr-4" >
+              <ul style="list-style-type:none;" >
+                <h1> <%= organism.name %></h1>
+                <li> <h2> body temperature:<%= organism.body_temperature %> °C</h2> </li>
+                <li> <h2> age: <%= organism.age %></h2></li>
+                <li> <h2>species: <%= organism.species %></h2></li>
+                <%= link_to 'show', organism_path(organism), class: "btn btn-primary" %>
+                <!-- <li> user id: <%= organism.user_id %></li> -->
+              </ul>
+            </div>
+
+          </div>
+      <% end %>
+
     <% end %>
 
-  <% end %>
 
+  </div>
 
 </div>

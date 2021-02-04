@@ -34,37 +34,6 @@
     @mid_age = (@min_age + @max_age) / 2
   %>
 
-  <!-- Display the Search Queries and a 'Reset Search' button if the current organisms get filtered -->
-  <% unless params[:search_name].blank? &&
-            params[:search_species].blank? &&
-            params[:search_body_temperature].blank?
-  %>
-    <!-- Search Queries -->
-    <div class="search_info">
-      <p>
-        <% unless params[:search_name].blank? %>
-          Name: <%= params[:search_name] %>
-         <br>
-         <% end %>
-        <% unless params[:search_species].blank? %>
-          Species: <%= params[:search_species].join(', ') %>
-         <br>
-         <% end %>
-        <% unless params[:search_body_temperature].blank? %>
-          Maximum Body Temperature: <%= params[:search_body_temperature] + '°C'%>
-          <br>
-        <% end %>
-        <% unless params[:search_age].blank? %>
-          Maximum Age: <%= params[:search_age] + ' Years'%>
-        <% end %>
-      </p>
-    </div>
-
-    <!-- Reset Button: Go back to Index Page (without search query) -->
-    <%= link_to 'Reset Search', organisms_path, class: "btn btn-primary" %>
-
-  <% end %>
-
   <div class="searchbar_container">
   <!-- Search Form -->
     <%= form_tag organisms_path, method: :get, class: "form-search" do %>
@@ -131,6 +100,36 @@
       </div>
     <% end %>
   </div>
+
+    <!-- Display the Search Queries and a 'Reset Search' button if the current organisms get filtered -->
+  <% unless params[:search_name].blank? &&
+            params[:search_species].blank? &&
+            params[:search_body_temperature].blank?
+  %>
+    <!-- Search Queries -->
+<!--     <div class="search_info">
+      <p>
+        <%# unless params[:search_name].blank? %>
+          Name: <%#= params[:search_name] %>
+         <br>
+         <%# end %>
+        <%# unless params[:search_species].blank? %>
+          Species: <%#= params[:search_species].join(', ') %>
+         <br>
+         <%# end %>
+        <%# unless params[:search_body_temperature].blank? %>
+          Maximum Body Temperature: <%#= params[:search_body_temperature] + '°C'%>
+          <br>
+        <%# end %>
+        <%# unless params[:search_age].blank? %>
+          Maximum Age: <%#= params[:search_age] + ' Years'%>
+        <%# end %>
+      </p>
+    </div> -->
+
+    <!-- Reset Button: Go back to Index Page (without search query) -->
+    <!-- <%#= link_to 'Reset Search', organisms_path, class: "btn btn-primary btn-reset-search" %> -->
+  <% end %>
 
 </body>
 </html>
