@@ -34,7 +34,7 @@
           <br>
           <%= infection.infection_start %> - <%= infection.infection_end %>
           <br>
-          <% if infection.status == "active" %>
+          <% if infection.status == "active" && point_in_time != "past" %>
             <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %>
           <% end %>
         </p>
