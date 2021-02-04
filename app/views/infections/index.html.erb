@@ -20,11 +20,14 @@
     <div class="card-infection <%= point_in_time %> card-<%= infection.status %>">
 
       <% if infection.organism.species == "pet" %>
-        <%= image_tag "organisms/pet_1.png"%>
+        <%# <%= image_tag "organisms/pet_1.png"%>
+        <i class="fas fa-cat" style="font-size: 110px;"></i>
       <% elsif infection.organism.species == "human" %>
-        <%= image_tag "organisms/human_1.png"%>
+        <%# <%= image_tag "organisms/human_1.png"%>
+        <i class="fas fa-walking" style="font-size: 100px;"></i>
       <% else %>
-        <%= image_tag "organisms/plant_1.png"%>
+        <%# <%= image_tag "organisms/plant_1.png"%>
+        <i class="fab fa-pagelines" style="font-size: 120px;"></i>
       <% end %>
 
       <div class="card-infection-infos">
