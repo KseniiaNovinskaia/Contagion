@@ -102,17 +102,19 @@ font-weight: bold !important;
   font-weight: bold;
   // background: white;
 
-  background: linear-gradient(90deg,
-    #4E6AF0EF,
-    #4E6AF0DF,
-    #4E6AF0CF,
-    #4E6AF0BF,
-    #4E6AF0CF,
-    #4E6AF0DF,
-    #4E6AF0EF,
-    );
-  background-size: 4000% 4000%;
-  animation: gradient 3s ease infinite;
+  &:hover {
+    background: linear-gradient(90deg,
+      #4E6AF0EF,
+      #4E6AF0DF,
+      #4E6AF0CF,
+      #4E6AF0BF,
+      #4E6AF0CF,
+      #4E6AF0DF,
+      #4E6AF0EF,
+      );
+    background-size: 4000% 4000%;
+    animation: gradient 3s ease infinite;
+  }
 }
 
 @keyframes gradient {
