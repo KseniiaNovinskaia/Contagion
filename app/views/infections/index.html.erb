@@ -4,34 +4,43 @@
 <div class="btn btn-outline-primary">
 <%= link_to "My infections", infections_path %>
 </div>
-<div class="mt-2 ml-10">
-  <br><br>
-  <h5 class="mt-2 ml-10">These are your infections</h5>
-  <br>
 
-  <% @infections.each do |infection| %>
+<h5 class="mt-5 ml-5">These are your infections</h5>
 
-    <% if infection.organism.species == "pet" %>
-      <div class="card-list dashboard-card-height pet" > <%=image_tag "organisms/pet_1.png"%>
-    <% elsif infection.organism.species == "human" %>
-       <div class="card-list dashboard-card-height human"> <%=image_tag "organisms/human_1.png" %>
+<div class="cards-grid mx-5 mt-5">
+  <%# @infections_sorted = @infections.sort_by {|i| i.infection_start} %>
+  <% @infections_sorted.each do |infection| %>
+    <% if infection.infection_start < Date.today && infection.infection_end < Date.today %>
+      <% point_in_time = "past" %>
+    <% elsif infection.infection_start <= Date.today && infection.infection_end >= Date.today  %>
+      <% point_in_time = "current" %>
     <% else %>
-      <div class="card-list dashboard-card-height plant"> <%=image_tag "organisms/plant_1.png" %>
+      <% point_in_time = "future" %>
     <% end %>
 
-        <div class="container mb-2 mr-4" >
-          <ul style="list-style: none;">
-            <h1><%= infection.organism.name %></h1>
-            <li> <h2>body temperature:<%= infection.organism.body_temperature %> °C</h2> </li>
-            <li> <h2>age: <%= infection.organism.age %></h2></li>
-            <li> <h2>species: <%= infection.organism.species %></h2></li>
-            <li> <h2>status: <%= infection.status %></h2></li>
-            <% if infection.status == "active" %>
-              <li> <h2>infection period: <%= infection.infection_start %> - <%= infection.infection_end %></h2></li>
-              <li> <h2><%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %></h2></li>
-            <% end %>
-          </ul>
-        </div>
+    <div class="card-infection <%= point_in_time %> card-<%= infection.status %>">
+
+      <% if infection.organism.species == "pet" %>
+        <%= image_tag "organisms/pet_1.png"%>
+      <% elsif infection.organism.species == "human" %>
+        <%= image_tag "organisms/human_1.png"%>
+      <% else %>
+        <%= image_tag "organisms/plant_1.png"%>
+      <% end %>
+
+      <div class="card-infection-infos">
+        <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
+        <p>
+          <%= infection.status %> <%= point_in_time %> infection
+          <br>
+          <%= infection.infection_start %> - <%= infection.infection_end %>
+          <br>
+          <% if infection.status == "active" %>
+            <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %>
+          <% end %>
+        </p>
       </div>
+
+    </div>
   <% end %>
 </div>
