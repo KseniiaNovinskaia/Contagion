@@ -1,3 +1,5 @@
+<div class="container-navbar">
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" >
   <%= link_to root_path, class: "navbar-brand" do %>
   <%=image_tag "logo.png"%> <h1 style="font-family: Poppins">CONTAGION</h1>
@@ -14,12 +16,10 @@
       <% if user_signed_in? %>
         <li class="nav-item active">
           <!-- we need a search bar here -->
-          <%= link_to "Create organism", "/organisms/new", class: "dropdown-item" %>
+          <%= link_to "Host", "/organisms/new", class: "host-button" %>
           <%=image_tag "avatar.png", size: '100%xauto', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% link_to "#", class: "navbar-brand" %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <h4 style="padding-left: 5px;">Profile</h4>
-            <%= link_to "Dashboard", "/dashboard", class: "dropdown-item" %>
+            <%= link_to "Dashboard", "/infections", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
@@ -35,4 +35,5 @@
   </div>
 
 
+</div>
 </div>

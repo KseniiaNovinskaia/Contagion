@@ -3,9 +3,7 @@ class Organism < ApplicationRecord
   has_many :infections
 
   validates :name, presence: true
-<<<<<<< HEAD
   validates :species, inclusion: { in: %w(human pet plant) }
-=======
 
   # include PgSearch::Model
   # pg_search_scope :search_by_name,
@@ -13,5 +11,4 @@ class Organism < ApplicationRecord
   #                 using: {
   #                   tsearch: { prefix: true }
   #                 }
->>>>>>> master
 end
