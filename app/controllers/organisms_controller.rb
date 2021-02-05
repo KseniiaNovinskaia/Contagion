@@ -11,8 +11,23 @@ class OrganismsController < ApplicationController
     # authorize @infection
   end
 
+  def new
+    authorize @organism = Organism.new
+  end
+
+  def create
+    @organism = Organism.new(organism_params)
+    @organism.user = current_user
+    authorize @organism
+    @organism.save
+    redirect_to dashboard_path
+  end
+
   private
 
+  def organism_params
+    params.require(:organism).permit(:name, :body_temperature, :age, :species)
+  end
   # for the searchbar, found here: https://medium.com/better-programming/making-a-search-and-filter-function-in-rails-a7858987f6f6
   def initialize_search
     @organisms = policy_scope(Organism)

@@ -3,4 +3,5 @@ class Organism < ApplicationRecord
   has_many :infections
 
   validates :name, presence: true
+  validates :species, inclusion: { in: %w(human pet plant) }
 end

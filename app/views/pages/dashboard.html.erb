@@ -1,0 +1,26 @@
+<%= render 'shared/navbar' %>
+
+<div class="btn btn-outline-primary">
+<%= link_to "My organisms", dashboard_path %>
+</div>
+<%= link_to "My infections", infections_path %>
+
+
+
+  <div class="mt-2 ml-10" id="organisms">
+  <br><br>
+  <h5 class="mt-2 ml-10">These are your organisms</h5>
+  <br>
+   <% @organisms.each do |organism| %>
+        <div class="container mb-2 mr-4" >
+          <ul style="list-style: none;">
+            <h1><%= organism.name %></h1>
+            <li> <h2>body temperature:<%= organism.body_temperature %> °C</h2> </li>
+            <li> <h2>age: <%= organism.age %></h2></li>
+            <li> <h2>species: <%= organism.species %></h2></li>
+          </ul>
+        </div>
+  <% end %>
+</div>
+
+
