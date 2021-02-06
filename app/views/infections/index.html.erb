@@ -1,12 +1,12 @@
 <%= render 'shared/navbar' %>
 
 
-<div class="btn btn-outline-primary">
-<%= link_to "My infections", infections_path %>
+<div class="btn-dashboard" >
+<%= link_to "My infections", infections_path, id: "btn-1" %>
+<%= link_to "My organisms", dashboard_path, id: "btn-2" %>
 </div>
-<%= link_to "My organisms", dashboard_path %>
 
-<h5 class="mt-5 ml-5">These are your infections</h5>
+<h5 class="mt-5 ml-5" style="text-align: center">These are your infections</h5>
 
 <div class="cards-grid mx-5 mt-5">
   <%# @infections_sorted = @infections.sort_by {|i| i.infection_start} %>
