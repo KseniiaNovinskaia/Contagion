@@ -63,10 +63,6 @@
     margin-top: 2px !important;
 }
 
-// all chosen options
-.select2-selection__rendered {
-}
-
 // the list you choose from
 .select2-results__options li {
   color: $blue;
@@ -80,6 +76,23 @@
   // background: $blue;
 }
 
+// all field with all the chosen options
+span.select2-selection.select2-selection--multiple.select2-selection--clearable {
+  line-height: 1.2;
+}
+
+
+// the dropdown placeholder (1/2)
+span.select2-search.select2-search--inline {
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+// the dropdown placeholder (2/2) ... idk which is doing what
+textarea.select2-search__field {
+font-weight: bold !important;
+}
+
 // the submit button
 .submit-searchbar {
   border-radius: 0 50px 50px 0;
@@ -89,17 +102,19 @@
   font-weight: bold;
   // background: white;
 
-  background: linear-gradient(90deg,
-    #4E6AF0EF,
-    #4E6AF0DF,
-    #4E6AF0CF,
-    #4E6AF0BF,
-    #4E6AF0CF,
-    #4E6AF0DF,
-    #4E6AF0EF,
-    );
-  background-size: 4000% 4000%;
-  animation: gradient 3s ease infinite;
+  &:hover {
+    background: linear-gradient(90deg,
+      #4E6AF0EF,
+      #4E6AF0DF,
+      #4E6AF0CF,
+      #4E6AF0BF,
+      #4E6AF0CF,
+      #4E6AF0DF,
+      #4E6AF0EF,
+      );
+    background-size: 4000% 4000%;
+    animation: gradient 3s ease infinite;
+  }
 }
 
 @keyframes gradient {
