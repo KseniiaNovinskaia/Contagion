@@ -1,10 +1,10 @@
 class OrganismsController < ApplicationController
 
   def index
-    @organisms = policy_scope(Organism)
+    @organisms = policy_scope(Organism).geocoded
     initialize_search
     handle_search_name
-    @markers = @organisms.geocoded.map do |organism|
+    @markers = @organisms.map do |organism|
       {
         lat: organism.latitude,
         lng: organism.longitude,
