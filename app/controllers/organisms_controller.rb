@@ -25,6 +25,7 @@ class OrganismsController < ApplicationController
   private
 
   def initialize_search
+
     session[:search_name] = params[:search_name]
     session[:search_species] = params[:search_species]
     session[:search_body_temperature] = params[:search_body_temperature]

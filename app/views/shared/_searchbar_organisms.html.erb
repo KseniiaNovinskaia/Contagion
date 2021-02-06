@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
   <!-- Include following two lines to work with 'Select2'  (see: https://select2.org/getting-started/installation)-->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body>
-
   <!-- Initialize values for the Input Fields -->
   <%
     @species = []
@@ -24,97 +22,101 @@
     @species.sort!
     body_temperatures.sort!
     ages.sort!
-
     @min_body_temperature = body_temperatures.first
     @max_body_temperature = body_temperatures.last
     @mid_body_temperature = (@min_body_temperature + @max_body_temperature) / 2
-
     @min_age = ages.first
     @max_age = ages.last
     @mid_age = (@min_age + @max_age) / 2
   %>
-
-  <!-- Display the Search Queries and a 'Reset Search' button if the current organisms get filtered -->
-  <% unless params[:search_name].blank? &&
-            params[:search_species].blank? &&
-            params[:search_body_temperature].blank?
-  %>
-    <!-- Search Queries -->
-    <div class="search_info">
-      <p>
-        <% unless params[:search_name].blank? %>
-          Name: <%= params[:search_name] %>
-         <br>
-         <% end %>
-        <% unless params[:search_species].blank? %>
-          Species: <%= params[:search_species].join(', ') %>
-         <br>
-         <% end %>
-        <% unless params[:search_body_temperature].blank? %>
-          Maximum Body Temperature: <%= params[:search_body_temperature] + '°C'%>
-          <br>
-        <% end %>
-        <% unless params[:search_age].blank? %>
-          Maximum Age: <%= params[:search_age] + ' Years'%>
-        <% end %>
-      </p>
-    </div>
-
-    <!-- Reset Button: Go back to Index Page (without search query) -->
-    <%= link_to 'Reset Search', organisms_path, class: "btn btn-primary" %>
-
-  <% end %>
-
   <div class="searchbar_container">
   <!-- Search Form -->
-    <%= form_tag organisms_path, method: :get do %>
-
+    <%= form_tag organisms_path, method: :get, class: "form-search" do %>
       <!-- Searchfield: Name -->
       <%#= text_field_tag :search_name,
         params[:search_name],
         class: "form-control",
         placeholder: "Find an organism"
       %>
-
-      <!-- Searchfield: Species -->
-      <%= label_tag :search_species, 'Species' %>
-      <%= select_tag :search_species,
-        options_for_select(@species),
-        options = { multiple: true, class: "select2" }
-      %>
-
-      <!-- Searchfield: Body Temperature -->
-      <%= label_tag :search_species, 'Max Body Temperature' %>
-      <%  value = params[:search_body_temperature].blank? ? @mid_body_temperature : params[:search_body_temperature]%>
-      <%= range_field_tag :search_body_temperature,
-      # params[:search_body_temperature],
-      value,
-      options = {
-        min: @min_body_temperature,
-        max: @max_body_temperature,
-        oninput: "document.getElementById('body-temperature-output').value = this.value + '°C'"
-        }
-      %>
-      <output id="body-temperature-output"> <%= value.to_s + '°C' %> </output>
-
-      <!-- Searchfield: Age -->
-      <%= label_tag :search_age, 'Max Age' %>
-      <%  value = params[:search_age].blank? ? @mid_age : params[:search_age]%>
-      <%= range_field_tag :search_age,
-      # params[:search_age],
-      value,
-      options = {
-        min: @min_age,
-        max: @max_age,
-        oninput: "document.getElementById('age-output').value = this.value + ' Years'"
-        }
-      %>
-      <output id="age-output"> <%= value.to_s + ' Years' %> </output>
-
-      <!-- Submit Button-->
-      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <div class="searchbar-part-container">
+        <div class="searchbar-part dropdown-multiselect">
+          <div class="dropdown-multiselect-box">
+            <!-- Searchfield: Species -->
+            <%#= label_tag :search_species, 'Species' %>
+            <%= select_tag :search_species,
+              options_for_select(@species),
+              options = { multiple: true, class: "select2"}
+            %>
+          </div>
+        </div>
+      </div>
+      <div class="range-input searchbar-part-container">
+        <div class="searchbar-part">
+          <!-- Searchfield: Body Temperature -->
+          <%= label_tag :search_body_temperature, 'body temperature' %>
+          <%  value = params[:search_body_temperature].blank? ? @mid_body_temperature : params[:search_body_temperature]%>
+          <%= range_field_tag :search_body_temperature,
+          # params[:search_body_temperature],
+          value,
+          options = {
+            min: @min_body_temperature,
+            max: @max_body_temperature,
+            oninput: "document.getElementById('body-temperature-output').value = 'up to ' + this.value + '°C'"
+            }
+          %>
+          <output id="body-temperature-output"> <%= 'up to ' + value.to_s + '°C' %> </output>
+        </div>
+      </div>
+      <div class="range-input searchbar-part-container">
+        <div class="searchbar-part">
+          <!-- Searchfield: Age -->
+          <%= label_tag :search_age, 'age' %>
+          <%  value = params[:search_age].blank? ? @mid_age : params[:search_age]%>
+          <%= range_field_tag :search_age,
+          # params[:search_age],
+          value,
+          options = {
+            min: @min_age,
+            max: @max_age,
+            oninput: "document.getElementById('age-output').value = 'up to ' + this.value + ' Years'"
+            }
+          %>
+          <output id="age-output"> <%= 'up to ' + value.to_s + ' Years' %> </output>
+        </div>
+      </div>
+      <div class="searchbar-part-container">
+        <!-- Submit Button-->
+        <%= submit_tag "Search", class: "btn btn-primary searchbar-part submit-searchbar" %>
+      </div>
     <% end %>
   </div>
-
+    <!-- Display the Search Queries and a 'Reset Search' button if the current organisms get filtered -->
+  <% unless params[:search_name].blank? &&
+            params[:search_species].blank? &&
+            params[:search_body_temperature].blank?
+  %>
+    <!-- Search Queries -->
+<!--     <div class="search_info">
+      <p>
+        <%# unless params[:search_name].blank? %>
+          Name: <%#= params[:search_name] %>
+         <br>
+         <%# end %>
+        <%# unless params[:search_species].blank? %>
+          Species: <%#= params[:search_species].join(', ') %>
+         <br>
+         <%# end %>
+        <%# unless params[:search_body_temperature].blank? %>
+          Maximum Body Temperature: <%#= params[:search_body_temperature] + '°C'%>
+          <br>
+        <%# end %>
+        <%# unless params[:search_age].blank? %>
+          Maximum Age: <%#= params[:search_age] + ' Years'%>
+        <%# end %>
+      </p>
+    </div> -->
+    <!-- Reset Button: Go back to Index Page (without search query) -->
+    <!-- <%#= link_to 'Reset Search', organisms_path, class: "btn btn-primary btn-reset-search" %> -->
+  <% end %>
 </body>
 </html>

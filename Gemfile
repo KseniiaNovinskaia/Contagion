@@ -38,6 +38,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+
 gem 'jquery-rails'
 
 gem 'pg_search', '~> 2.3.0'

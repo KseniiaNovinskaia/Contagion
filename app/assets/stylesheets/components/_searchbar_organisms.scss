@@ -1,0 +1,130 @@
+.searchbar_container {
+  margin: 0 auto;
+  border-radius: 100px;
+  font-family: $main-font;
+  font-weight: bold;
+  color: $blue;
+}
+
+.form-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.searchbar-part-container {
+  width: 25%;
+  height: 100px;
+  display: flex;
+  margin: 2px;
+}
+
+.searchbar-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin: auto;
+  border: 2px $blue solid;
+
+  label, output {
+    font-size: 14px;
+    margin: 4px;
+  }
+}
+
+.dropdown-multiselect-box {
+  height: 60px;
+  margin: auto 0;
+  width: 95%;
+
+  .select2-container {
+    width: 100% !important;
+  }
+
+  // the box you can click in
+  .select2-selection {
+  height: 60px;
+  border: 2px $blue solid !important;
+  }
+}
+
+  .select2-selection__choice__display {
+  }
+
+  // the option you've chosen
+.select2-selection__choice {
+    background: transparent !important;
+    border: none !important;
+    font-size: 14px;
+    margin-top: 2px !important;
+}
+
+// the list you choose from
+.select2-results__options li {
+  color: $blue;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.dropdown-multiselect {
+  border-radius: 50px 0 0 50px;
+  padding: 0 8px 0 16px;
+  // background: $blue;
+}
+
+// all field with all the chosen options
+span.select2-selection.select2-selection--multiple.select2-selection--clearable {
+  line-height: 1.2;
+}
+
+
+// the dropdown placeholder (1/2)
+span.select2-search.select2-search--inline {
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+// the dropdown placeholder (2/2) ... idk which is doing what
+textarea.select2-search__field {
+font-weight: bold !important;
+}
+
+// the submit button
+.submit-searchbar {
+  border-radius: 0 50px 50px 0;
+  color: white;
+  padding-top: 21px;
+  font-size: 24px;
+  font-weight: bold;
+  // background: white;
+
+  &:hover {
+    background: linear-gradient(90deg,
+      #4E6AF0EF,
+      #4E6AF0DF,
+      #4E6AF0CF,
+      #4E6AF0BF,
+      #4E6AF0CF,
+      #4E6AF0DF,
+      #4E6AF0EF,
+      );
+    background-size: 4000% 4000%;
+    animation: gradient 3s ease infinite;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
