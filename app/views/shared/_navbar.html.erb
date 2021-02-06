@@ -1,9 +1,13 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon " >
+
   <%= link_to root_path, class: "navbar-brand ml-4" do %>
   <%=image_tag "logo.png"%>
   <h1 style="font-family: Poppins">CONTAGION</h1>
     <% end %>
+<div class="<%= "searchbar-hidden" if controller_name == 'pages' && action_name == 'home' %>">
+<%= render 'shared/searchbar_organisms' %>
+</div>
   <div class="collapse navbar-collapse mr-4" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto ">
 
