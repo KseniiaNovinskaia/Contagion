@@ -57,10 +57,6 @@ i {
   object-fit: cover;
 }
 
-.dashboard-card-height {
-  height: 250px;
-}
-
 .card-show {
   width: 1200px;
   height: 1100px;
@@ -117,4 +113,13 @@ i {
   h1{
     color: #784931;
   }
+}
+
+.my-organisms {
+  width: 400px;
+}
+
+.cards-grid {
+  display: flex;
+  justify-content: center;
 }
