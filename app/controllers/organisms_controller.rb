@@ -1,7 +1,18 @@
 class OrganismsController < ApplicationController
+
   def index
+    @organisms = policy_scope(Organism)
     initialize_search
     handle_search_name
+    @markers = @organisms.geocoded.map do |organism|
+      {
+        lat: organism.latitude,
+        lng: organism.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { organism: organism }),
+        image_url: helpers.asset_url('logo.png')
+      }
+
+    end
   end
 
   def show
@@ -14,7 +25,7 @@ class OrganismsController < ApplicationController
   private
 
   def initialize_search
-    @organisms = policy_scope(Organism)
+
     session[:search_name] = params[:search_name]
     session[:search_species] = params[:search_species]
     session[:search_body_temperature] = params[:search_body_temperature]
