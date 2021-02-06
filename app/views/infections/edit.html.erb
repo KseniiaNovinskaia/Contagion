@@ -1,7 +1,0 @@
-<%= render 'shared/navbar' %>
-
-<h1>Cancel your Infection</h1>
-<%= simple_form_for [@organism, @infection] do |f| %>
-  <%= f.input :status, collection: ["cancelled", "active"], as: :radio_buttons %>
-  <%= f.submit "Update Infection Status" %>
-<% end %>

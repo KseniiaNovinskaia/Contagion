@@ -20,28 +20,33 @@
     <% end %>
 
     <div class="card-infection <%= point_in_time %> card-<%= infection.status %>">
-
-      <% if infection.organism.species == "pet" %>
-        <%= image_tag "organisms/pet_1.png"%>
-      <% elsif infection.organism.species == "human" %>
-        <%= image_tag "organisms/human_1.png"%>
-      <% else %>
-        <%= image_tag "organisms/plant_1.png"%>
-      <% end %>
-
-      <div class="card-infection-infos">
-        <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
-        <p>
-          <%= infection.status %> <%= point_in_time %> infection
-          <br>
-          <%= infection.infection_start %> - <%= infection.infection_end %>
-          <br>
-          <% if infection.status == "active" %>
-            <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %>
-          <% end %>
-        </p>
+      <div>
+        <% if infection.organism.species == "pet" %>
+          <%# <%= image_tag "organisms/pet_1.png"%>
+          <i class="fas fa-cat" style="font-size: 110px;"></i>
+        <% elsif infection.organism.species == "human" %>
+          <%# <%= image_tag "organisms/human_1.png"%>
+          <i class="fas fa-walking" style="font-size: 100px;"></i>
+        <% else %>
+          <%# <%= image_tag "organisms/plant_1.png"%>
+          <i class="fab fa-pagelines" style="font-size: 120px;"></i>
+        <% end %>
       </div>
 
+      <!-- <div class="card-infection-infos"> -->
+        <div>
+          <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
+          <p>
+            <%= infection.status %> <%= point_in_time %> infection
+            <br>
+            <%= infection.infection_start %> - <%= infection.infection_end %>
+          </p>
+        </div>
+        <div>
+          <% if infection.status == "active" && point_in_time != "past" %>
+            <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn-cancel" %>
+          <% end %>
+        </div>
     </div>
   <% end %>
 </div>
