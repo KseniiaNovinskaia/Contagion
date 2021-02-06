@@ -18,8 +18,7 @@ i.fa-heart {
 }
 
 .card-list{
-  width: 800px;
-  height: 200px;
+  width: 600px;
   top: 214px;
   left: 139px;
   border-radius: 20px;
@@ -30,12 +29,9 @@ i {
   margin-bottom: 10px;
   margin-left: 30px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  //background-size: cover;
-  //background-position: center;
   height: 180px;
   display: flex;
   justify-content: center;
-  //align-items: center;
   h1 {
     font-family: Poppins;
     font-size: 40px;
@@ -86,9 +82,9 @@ i {
   }
 }
 
-.human{
+.human {
   background-color: #FF8577;
-  border: solid 1px #BF3D3D;
+  border: solid 4px black;
     i {
     color: #BF3D3D;
   }
@@ -117,4 +113,13 @@ i {
   h1{
     color: #784931;
   }
+}
+
+.my-organisms {
+  width: 400px;
+}
+
+.cards-grid {
+  display: flex;
+  justify-content: center;
 }
