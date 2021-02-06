@@ -18,12 +18,10 @@ const initMapbox = () => {
   const markers = JSON.parse(mapElement.dataset.markers);
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
-
   });
 
   // const fitMapToMarkers = (map, markers) => {
@@ -32,10 +30,10 @@ const initMapbox = () => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 5000 });
 
   element.className = 'marker';
-    element.style.backgroundImage = `url('/logo.png')`;
-    element.style.backgroundSize = 'contain';
-    element.style.width = '25px';
-    element.style.height = '25px';
+  element.style.backgroundImage = `url('/logo.png')`;
+  element.style.backgroundSize = 'contain';
+  element.style.width = '25px';
+  element.style.height = '25px';
 
 }
 };

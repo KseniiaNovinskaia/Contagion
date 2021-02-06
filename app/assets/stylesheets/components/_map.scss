@@ -6,10 +6,18 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Poppins';
+
 }
 
 .info-window {
-  font-family: Poppins;
+font-family: Poppins !important;
+  h2 {
+    font-family: Poppins !important;
+  }
+  h3 {
+    font-family: Poppins !important;
+  }
+  //background-color: pink;
 }
 
 
