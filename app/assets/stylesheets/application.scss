@@ -7,6 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 // Your CSS partials
 @import "components/index";
@@ -14,7 +15,7 @@
 
 //
 @import "flatpickr/dist/flatpickr";
-
+@import 'mapbox-gl/dist/mapbox-gl';
 
 body{
   background-color: white;

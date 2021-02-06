@@ -2,10 +2,15 @@
 
 <div class="container-homepage">
   <div class="text-container">
-    <h2 class="homepage-title">Oh, hello <br>
+    <h2 class="homepage-title mt-1">Oh, hello <br>
     virus!</h2>
-    <p class="homepage-subtitle">Discover the largest community of living organisms ready to be infected, just one click away</p>
-    <%= link_to 'Browse Organisms', organisms_path, class: "btn btn-primary" %>
+    <p class="homepage-subtitle ml-4 mt-4 mb-4">Vibrant communities of living organisms <br>
+      ready to be infected
+      <br>
+      <br>
+
+    <%= render 'shared/searchbar_organisms' %>
+
   </div>
 </div>
 

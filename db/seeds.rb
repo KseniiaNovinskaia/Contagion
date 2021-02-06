@@ -13,5 +13,6 @@
     # t.string "species"
 
 10.times do
-  Organism.create!(name: %w[Olaf Bob Kitty Knut].sample, body_temperature: (25..41).to_a.sample, age: (0..100).to_a.sample, species: %w[human pet plant].sample, user_id: 1)
+  Organism.create!(name: %w[Olaf Bob Kitty Knut].sample, body_temperature: (25..41).to_a.sample, age: (0..100).to_a.sample, address: "Under Den Linden 118 Berlin", species: %w[human pet plant].sample, user_id: 1)
 end
+

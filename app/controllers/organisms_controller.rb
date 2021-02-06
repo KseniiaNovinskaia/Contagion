@@ -1,7 +1,18 @@
 class OrganismsController < ApplicationController
+
   def index
+    @organisms = policy_scope(Organism)
     initialize_search
     handle_search_name
+    @markers = @organisms.geocoded.map do |organism|
+      {
+        lat: organism.latitude,
+        lng: organism.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { organism: organism }),
+        image_url: helpers.asset_url('logo.png')
+      }
+
+    end
   end
 
   def show
@@ -13,28 +24,22 @@ class OrganismsController < ApplicationController
 
   private
 
-  # for the searchbar, found here: https://medium.com/better-programming/making-a-search-and-filter-function-in-rails-a7858987f6f6
   def initialize_search
-    @organisms = policy_scope(Organism)
-    session[:search_name] = params[:search_name] # 'session[:search_name] ||= params[:search_name]' didn't work
+    session[:search_name] = params[:search_name]
     session[:search_species] = params[:search_species]
+    session[:search_body_temperature] = params[:search_body_temperature]
+    session[:search_age] = params[:search_age]
   end
 
-  # we probably want to refactor this after the lecture on search bars
   def handle_search_name
-    if (session[:search_name].nil? || session[:search_name].empty?) &&
-       (session[:search_species].nil? || session[:search_species].empty?)
-      @organisms = Organism.all
-    elsif !session[:search_name].empty? && session[:search_species].empty?
-      @organisms = Organism.where("name LIKE ?",
-                                  "%#{session[:search_name].titleize}%")
-    elsif session[:search_name].empty? && !session[:search_species].empty?
-      @organisms = Organism.where("species = ?",
-                                  session[:search_species])
-    else
-      @organisms = Organism.where("name LIKE ? AND species = ?",
-                                  "%#{session[:search_name].titleize}%",
-                                  session[:search_species])
-    end
+    # name = session[:search_name]
+    species = session[:search_species]
+    body_temperature = session[:search_body_temperature]
+    age = session[:search_age]
+    @organisms = Organism.all
+    # @organisms = @organisms.search_by_name(name) unless name.blank?
+    @organisms = @organisms.select { |organism| species.include?(organism.species) } unless species.blank?
+    @organisms = @organisms.select { |organism| organism.body_temperature <= body_temperature.to_i } unless body_temperature.blank?
+    @organisms = @organisms.select { |organism| organism.age <= age.to_i } unless age.blank?
   end
 end

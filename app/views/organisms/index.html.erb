@@ -1,12 +1,33 @@
-<div> <%= render 'shared/navbar' %> <%= render "shared/searchbar_organisms" %> </div>
+<%= render 'shared/navbar' %>
+<%= render "shared/searchbar_organisms" %>
+
+<div class="container">
+  <div class="row">
 
 
-<div class="mt-2 ml-1 mb-5">
-  <br><br>
-  <h5 class="mt-2 ml-5 title">We have found these organisms for you</h5>
+<div class="col-6">
+
+<div id="map"
+     style="width: 50%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
+
+
+<div class="col-6 mt-2 ml-1 mb-5">
+
+
+  <% if @organisms.empty? %>
+    <h5 class="mt-2 ml-5 title">No organisms found! <br> Try with another search input :)</h5>
+  <% else %>
+    <h5 class="mt-2 ml-5 title">We have found <%= @organisms.size %> organism<%= 's' unless @organisms.size == 1%> for you, VIRUS</h5>
+  <% end %>
+
   <br>
 
-  <% @organisms.each do |organism| %>
+  <% unless @organisms.blank? %>
+    <% @organisms.each do |organism| %>
+
 
     <% if organism.species == "pet" %>
 
@@ -83,5 +104,12 @@
 
 
   <% end %>
+
+    <% end %>
+
   <% end %>
 </div>
+</div>
+</div>
+</div>
+
