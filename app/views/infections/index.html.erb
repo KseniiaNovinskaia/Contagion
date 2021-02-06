@@ -31,16 +31,17 @@
       <% end %>
 
       <div class="card-infection-infos">
-        <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
-        <p>
-          <%= infection.status %> <%= point_in_time %> infection
-          <br>
-          <%= infection.infection_start %> - <%= infection.infection_end %>
-          <br>
+        <div>
+          <h2><%= infection.organism.name %>, <%= infection.organism.species %></h2>
+          <p>
+            <%= infection.status %> <%= point_in_time %> infection
+            <br>
+            <%= infection.infection_start %> - <%= infection.infection_end %>
+          </p>
+        </div>
           <% if infection.status == "active" && point_in_time != "past" %>
-            <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn btn-primary" %>
+            <%= link_to "Cancel Infection", cancel_infection_path(infection), method: :patch, class: "btn-cancel" %>
           <% end %>
-        </p>
       </div>
 
     </div>
