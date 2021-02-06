@@ -1,0 +1,6 @@
+<div class="mt-4 mb-3 info-window">
+<h3><%=organism.name %></h2>
+<h2><%= organism.species.capitalize %></h2>
+<p>Age: <%= organism.age %></p>
+<%= link_to 'Infect', organism_path(organism), class: "btn btn-info-window" %>
+</div>
