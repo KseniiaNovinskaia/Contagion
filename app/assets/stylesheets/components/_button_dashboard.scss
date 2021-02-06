@@ -1,0 +1,30 @@
+.btn-dashboard {
+  text-align: center;
+}
+
+.btn-dashboard:hover {
+  text-decoration: none;
+}
+
+#btn-1 , #btn-2 {
+  display: inline-block;
+  border: 2px solid #4E6AF0;
+  font-family: Poppins;
+  border-radius: 100px;
+  padding: 8px 25px;
+  font-size: 24px;
+}
+
+#btn-1:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #4E6AF0;
+  transition-duration: 300ms;
+}
+
+#btn-2:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #4E6AF0;
+  transition-duration: 300ms;
+}
