@@ -5,6 +5,7 @@
   <%= f.input :name %>
   <%= f.input :body_temperature %>
   <%= f.input :age %>
+  <%= f.input :address %>
   <%= f.input :species, :collection => %w[human pet plant], prompt: "-- SELECT ONE --" %>
   <%= f.submit :class => "btn btn-primary" %>
 <% end %>

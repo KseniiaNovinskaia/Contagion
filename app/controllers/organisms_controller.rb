@@ -37,7 +37,7 @@ class OrganismsController < ApplicationController
   private
 
   def organism_params
-    params.require(:organism).permit(:name, :body_temperature, :age, :species)
+    params.require(:organism).permit(:name, :body_temperature, :age, :species, :address)
   end
   # for the searchbar, found here: https://medium.com/better-programming/making-a-search-and-filter-function-in-rails-a7858987f6f6
 
